@@ -8,6 +8,7 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+          <!-- .active class is used to highlight which is the active/current link -->
           <li :class="isHomePage ? 'nav-item active' : 'nav-item'">
             <a class="nav-link" href="#" @click="setNewPage('home')">Home <span class="sr-only"></span></a>
           </li>
@@ -21,22 +22,28 @@
 </template>
 
 <script>
+// export 
   export default {
     name: 'App',
     data(){
-    return {
+    return { // we return the home object
       currentPage: 'home',
     }
   },
+  // computed properties are cached based on their reactive dependencies (will only re-evaluate when some of its reactive dependencies have changed)
   computed: {
+    // a computed getter
     isHomePage() {
+      // `this` points to the component instance
       return this.currentPage === 'home'
     }
   },
   methods: {
+    //setteer
     setNewPage(page) {
       this.currentPage = page
-      this.$emit('set-new-page', page)
+      //emit a custom event.
+      this.$emit('set-new-page', page) //we set the page to be the current page
     }
   },
   }

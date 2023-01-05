@@ -17,7 +17,6 @@
 
 <script>
 export default {
-
   name: 'GradingCard',
   data(){
     return{
@@ -41,9 +40,12 @@ export default {
   },
   computed: {
     projectGrade() {
+      // we start by checking if there are any grades in the project, and if there aren't it will return "Ungraded".
       if (!this.project.grades || this.project.grades.length < 3) return 'Ungraded'
       const grades = JSON.parse(JSON.stringify(this.project.grades.sort()))
+      // shift() method removes the first element from an array and returns that removed element.
       grades.shift()
+      // pop() method removes the last element from an array and returns that element
       grades.pop()
       let total = 0
       let count = 0

@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios' //handling the http request
 
 export async function submitProject(params) {
     console.log('params', params)
