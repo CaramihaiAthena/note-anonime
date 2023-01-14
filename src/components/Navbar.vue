@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg bg-info" style="border-radius: 10px">
+    <nav class="navbar navbar-expand-lg bg-info" style="border-radius: 11px">
       <!-- <a class="navbar-brand text-light" href="#">Navbar</a> -->
       <button
         class="navbar-toggler"
