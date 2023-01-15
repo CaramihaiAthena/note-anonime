@@ -1,15 +1,15 @@
 <template>
-  <div class="card">
+  <div class="card bg-info text-light" style="border-radius: 10px;">
     <div class="card-body">
       <h5 class="card-title">{{ project.title }}</h5>
       <h6 class="card-subtitle my-2 text-muted">{{ project.fname }} {{ project.lname }}</h6>
       <p class="card-text">{{ project.projectText }}</p>
-      <a href="#" @click="showGradingInput = !showGradingInput" class="card-link">Grade Project right here ({{projectGrade}})</a>
+      <a href="#" @click="showGradingInput = !showGradingInput" class="card-link  text-light">Grade Project right here ({{projectGrade}})</a>
       <!-- if we click, will appear an input field where we need to grade the prooject  -->
       <div v-if="showGradingInput">
         <!-- before we enter something, we need to validate the input -->
         <input type="text" @input="validateField($event.target.value)" v-model="inputGrade" class="form-control mr-sm-2 mt-2">
-        <button type="submit" @click="handleSubmitGrade" class="btn btn-success mt-4">Grade The Project</button>
+        <button type="submit" @click="handleSubmitGrade" class="btn btn-success mt-4 bg-light text-info" style="border: none;">Grade The Project</button>
       </div>
     </div>
   </div>
