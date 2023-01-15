@@ -75,7 +75,7 @@ export default {
   // If the input field is not present, then it will return an empty string.
     validateField(input){
       if (!input) return
-      input = +input
+      input = +input   // + transforms a string into integer
       if(!(input >= 1 && input <= 10)) {
         this.inputGrade = 1
         alert("The grading system allows for grades between 1 and 10")
