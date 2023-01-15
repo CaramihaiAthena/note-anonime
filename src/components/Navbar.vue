@@ -34,25 +34,23 @@
 </template>
 
 <script>
-// export
 export default {
   name: "App",
   data() {
     return {
-      // we return the home object
+      // initial, pagina curenta este home
       currentPage: "home",
     };
   },
   // computed properties are cached based on their reactive dependencies (will only re-evaluate when some of its reactive dependencies have changed)
   computed: {
-    // a computed getter
     isHomePage() {
       // `this` points to the component instance
       return this.currentPage === "home";
     },
   },
   methods: {
-    //setteer
+    //sets the current page
     setNewPage(page) {
       this.currentPage = page;
       //emit a custom event.

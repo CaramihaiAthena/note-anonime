@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <!-- set the navbar -->
     <Navbar @set-new-page="setNewPage" />
     <!-- if we are on the home page, we create a form where we enter the data for the project -->
     <div v-if="isHomePage">  
@@ -25,6 +26,7 @@
       <button type="submit" class="btn btn-primary" @click="submitHandler">Submit</button>
     </div>
     <div v-else-if="projects.length" v-for="(project, index) in projects" :key="index">
+      <!-- :project = prop , "project" => projects[i] -->
       <GradingCard
         :project="project"
         :index="index"
@@ -64,7 +66,7 @@ export default {
   // computed properties are cached based on their reactive dependencies (will only re-evaluate when some of its reactive dependencies have changed)
   computed: {
     isHomePage() {
-      // a computed getter
+      // a computed value that return homepage true or false
       return this.currentPage === 'home'
     }
   },
@@ -75,6 +77,7 @@ export default {
         lName: this.lName,
         title: this.title,
         projectText: this.projectText,
+        grades: [],
       }
       await submitProject(project)
       //we push our project into our array of proojects
@@ -84,12 +87,13 @@ export default {
     setNewPage(page){
       this.currentPage = page
     },
-    //The code above parses the JSON object and assigns the grades to each project.
     handleProjectGraded(params){
+      // params.index indicates the index of the project graded
+      // push the grade in correct project (ex: project with index 1)
       this.projects[params.index].grades.push(params.grade)
-      //creates a JSON object and assigns the values of this new object to the projects list 
-      //so that they can be parsed later on into individual objects with their respective grade 
-      //information stored inside them
+      // we use JSON.parse(JSON.stringify(this.projects)) so we can change the object address of
+      // projects so that the component GradingCard rerenders and display the new values
+      // this method of work is called a deep clone of an object in JS
       this.projects = JSON.parse(JSON.stringify(this.projects))
     }
   },
