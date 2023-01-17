@@ -1,6 +1,6 @@
 <template>
   <div class="bg-image" 
-      style="background-repeat: repeat; 
+      style="background-repeat: repeat;  
       background-attachment: fixed; 
       background-image: url('https://i.pinimg.com/originals/a4/17/cf/a417cf4d9dea17fd59a132333446ee7d.jpg');">
   <div id="app" class="card.mx-auto" 
